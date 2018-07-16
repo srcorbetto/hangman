@@ -10,12 +10,12 @@ $(document).ready(function(){
   var wins = 0;
   var losses = 0;
   var randomWords = ["pizza", "anime", "weezer", "ukulele"];
-  var guessedLetters = [];
   var selectedWord;
   var selectedWordLetters = [];
-  var revealedLetters; // Compare this to selectedWordLetters
+  var revealedLetters = []; // Compare this to selectedWordLetters
   var keyPressed;
   var acceptedInput = ["a", "b", "c", "d", "e", "f", "g", "h", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+  var guessedLetters = [];
 
   // Randomly select a word from the randomWord array and assign to the selectedWord
   function selectWord() {
@@ -33,7 +33,18 @@ $(document).ready(function(){
     selectedWordLetters = selectedWord.split("");
     console.log(selectedWord);
     console.log(selectedWordLetters);
-  }
+
+    // Generate the placeholder for word
+    revealWord(selectedWordLetters);
+  };
+
+  function revealWord(letterArray) {
+    for(i = 0; i < letterArray.length; i++) {
+      revealedLetters.push("_");
+    };
+    // Removes the commas
+    $(".word").text(revealedLetters.join(" "));
+  };
 
   selectWord();
 
@@ -55,10 +66,14 @@ $(document).ready(function(){
       if (keyPressed === acceptedInput[i]) {
       
         console.log("Letter Pressed");
+
+         // Push to guessed letters
+        guessedLetters.push(keyPressed);
+        $(".guessed-letters").text(guessedLetters.join(" "));
+
         // Pull out of accepted input
         acceptedInput.splice(i, 1);
-        // Push to guessed letters
-        // ...
+       
         console.log(acceptedInput);
         compareLetters(keyPressed);
       }
