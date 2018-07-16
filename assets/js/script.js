@@ -14,7 +14,7 @@ $(document).ready(function(){
   var selectedWordLetters = [];
   var revealedLetters = []; // Compare this to selectedWordLetters
   var keyPressed;
-  var acceptedInput = ["a", "b", "c", "d", "e", "f", "g", "h", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+  var acceptedInput = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
   var guessedLetters = [];
 
   // Randomly select a word from the randomWord array and assign to the selectedWord
@@ -86,8 +86,10 @@ $(document).ready(function(){
       
         if (letter === selectedWordLetters[i]) {
           // Reveal the letter
-          // Something needs to happen
-            console.log("Letter match");
+          revealedLetters[i] = letter;
+          $(".word").text(revealedLetters.join(" "));
+
+          console.log("Letter match");
       
         } else if (keyPressed !== selectedWordLetters[i]) {
           console.log("Letter doesn't Match")
@@ -100,11 +102,15 @@ $(document).ready(function(){
       if (numberOfNonMatches === selectedWordLetters.length) {
         // Decrease score
         numberOfGuesses--;
+        if (numberOfGuesses === 0) {
+          alert("Out of guesses. Start over.");
+        }
+        $(".guesses").text(numberOfGuesses);
         console.log("Guesses remaining: " +  numberOfGuesses);
       }
     };
 
-  };
+  }; //end keyup...
 
   // Initialize Values
   $(".wins").text(wins);
