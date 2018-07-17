@@ -1,3 +1,35 @@
 p, ul, h6, h5, h4, h3, h2, h1 {
   font-family: 'Gaegu', cursive;
+  text-align: center;
+}
+
+.bg {
+  background: url(../img/linedpaper.png) repeat;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.drawing-holder {
+  width: 100%;
+  max-width: 250px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.drawing {
+  width: 48.96%;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+.drawing-2, .drawing-4, .drawing-6 {
+  right: 2.07%; 
+}
+
+.pencil {
+  height: 150px;
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
 }

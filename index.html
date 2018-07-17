@@ -9,7 +9,7 @@
     <title>Hangman</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Gaegu|Montserrat" rel="stylesheet">
 
@@ -24,7 +24,7 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div class="container bg">
+    <div class="container-fluid bg">
 
       <div class="row">
         <div class="col">
@@ -35,12 +35,35 @@
           </p>
           <p class="guesses-holder">Guesses Remaining: <span class="guesses"></span>
           </p>
-          <p class="word-holder">Word: <span class="word"></span>
-          </p>
-          <p class="guessed-letters-holder">Guessed Letters: <span class="guessed-letters"></span>
-          </p>
         </div>
       </div>
+      <div class="row">
+        <div class="col">
+          <div class="drawing-holder">
+            <img src="http://via.placeholder.com/350x350" alt="" class="drawing drawing-1">
+            <img src="http://via.placeholder.com/350x350" alt="" class="drawing drawing-2">
+            <img src="http://via.placeholder.com/350x350" alt="" class="drawing drawing-3">
+            <img src="http://via.placeholder.com/350x350" alt="" class="drawing drawing-4">
+            <img src="http://via.placeholder.com/350x350" alt="" class="drawing drawing-5">
+            <img src="http://via.placeholder.com/350x350" alt="" class="drawing drawing-6">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+            <p class="word-holder"><span class="word"></span>
+            </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+            <p class="guessed-letters-holder">Guessed Letters: <span class="guessed-letters"></span>
+            </p>
+        </div>
+      </div>
+
+      <!-- Random Pencil Gif -->
+      <img src="https://media.giphy.com/media/8SNt5Vr8AtFMA/giphy.gif" alt="Pencil" class="pencil">
 
     </div>
 
