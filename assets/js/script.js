@@ -1,8 +1,5 @@
 $(document).ready(function(){
 
-  // Test connection
-  console.log("script.js connected.");
-
   // List of variables
   var numberOfGuesses = 7;
   // Used to store the links to the hangman images
@@ -38,34 +35,38 @@ $(document).ready(function(){
     revealWord(selectedWordLetters);
   };
 
+  // Reset the variables
+  function valueReset() {
+    numberOfGuesses = 7;
+    revealedLetters = [];
+    guessedLetters = [];
+    acceptedInput = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+    $(".guesses").text(numberOfGuesses);
+    $(".guessed-letters").text("");
+  };
+
+  // Updates the user's progress
   function revealWord(letterArray) {
+    // Reset values
+    valueReset();
     for(i = 0; i < letterArray.length; i++) {
       revealedLetters.push("_");
     };
-    // Removes the commas
+    // Removes the commas for new _ _
     $(".word").text(revealedLetters.join(" "));
   };
 
+  // Starts the game
   selectWord();
 
-  // Print the word to the client
-
-  // Print the wins and losses to the client
-  console.log("Wins: " + wins);
-  console.log("Losses: " + losses);
-
   // Take in keyboard strokes and evaluate game conditions
-  // Make sure the keyup === acceptedInput
   document.onkeyup = function(e) {
     
     keyPressed = e.key;
-    console.log(keyPressed);
 
     // Loop through the acceptedInput to see if keyPressed matches
     for(i = 0; i < acceptedInput.length; i++) {
       if (keyPressed === acceptedInput[i]) {
-      
-        console.log("Letter Pressed");
 
          // Push to guessed letters
         guessedLetters.push(keyPressed);
@@ -73,12 +74,12 @@ $(document).ready(function(){
 
         // Pull out of accepted input
         acceptedInput.splice(i, 1);
-       
-        console.log(acceptedInput);
+
         compareLetters(keyPressed);
       }
     }
 
+    // Function to evaluate the key pressed once it's confirmed it's an accepted input
     function compareLetters(letter) {
        // Count how many times a number matches
       var numberOfNonMatches = 0;
@@ -89,12 +90,16 @@ $(document).ready(function(){
           revealedLetters[i] = letter;
           $(".word").text(revealedLetters.join(" "));
 
-          console.log("Letter match");
+          // See if the user has matched the word
+          if (revealedLetters.join() === selectedWordLetters.join()) {
+            alert("You won!!!");
+            wins++;
+            $(".wins").text(wins);
+            selectWord();
+          };
       
         } else if (keyPressed !== selectedWordLetters[i]) {
-          console.log("Letter doesn't Match")
           numberOfNonMatches++;
-          console.log("number of non matches: " + numberOfNonMatches);
         }
       }
 
@@ -106,7 +111,6 @@ $(document).ready(function(){
           alert("Out of guesses. Start over.");
         }
         $(".guesses").text(numberOfGuesses);
-        console.log("Guesses remaining: " +  numberOfGuesses);
       }
     };
 
