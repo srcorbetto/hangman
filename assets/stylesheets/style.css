@@ -14,8 +14,13 @@ p, button, ul, h6, h5, h4, h3, h2, h1 {
   text-align: center;
 }
 
-.portfolio-link {
-  
+.portfolio-link a {
+  text-decoration: none;
+  color: #000;
+}
+
+.portfolio-link a:hover {
+  text-decoration: underline;
 }
 
 .portfolio-link .logo {

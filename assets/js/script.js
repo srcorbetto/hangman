@@ -6,7 +6,7 @@ $(document).ready(function(){
   var bodyParts = [];
   var wins = 0;
   var losses = 0;
-  var randomWords = ["pizza", "anime", "weezer", "ukulele"];
+  var randomWords = ["pizza", "anime", "weezer", "ukulele", "ficus", "boop", "potato", "muscles", "hipster", "pepperoni", "history", "cartoons"];
   var selectedWord;
   var selectedWordLetters = [];
   var revealedLetters = []; // Compare this to selectedWordLetters
