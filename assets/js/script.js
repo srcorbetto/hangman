@@ -99,7 +99,7 @@ $(document).ready(function(){
             wins++;
             readyToPlay = false;
             $(".wins").text(wins);
-            $(".modal-start h2").text("You Won!");
+            $(".modal-start h1").text("You Won!");
             $(".modal-start p").text("Press NEW GAME! to play again.");
             $(".modal-start button").text("NEW GAME!");
             $(".modal-start").removeClass("hidden");
@@ -143,7 +143,7 @@ $(document).ready(function(){
           losses++;
           readyToPlay = false;
           $(".losses").text(losses);
-          $(".modal-start h2").text("You Lose!");
+          $(".modal-start h1").text("You Lose!");
           $(".modal-start p").text("Press NEW GAME! to play again.");
           $(".modal-start button").text("NEW GAME!");
           $(".modal-start").removeClass("hidden");
