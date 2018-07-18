@@ -10,6 +10,11 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link rel="shortcut icon" href="assets/img/icon.png" type="image/x-icon">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Gaegu|Montserrat" rel="stylesheet">
 
@@ -24,46 +29,48 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div class="container-fluid bg">
+    <!-- Modal -->
+    <div class="modal-start">
+      <h2>Welcome to Hangman</h2>
+      <p>Click PLAY! to get started.</p>
+      <button type="button" class="btn btn-primary">PLAY!</button>
+    </div>
+
+    <div class="container-fluid bg pt-4">
 
       <div class="row">
-        <div class="col">
-          <h1 class="title">Hangman</h1>
-          <p class="wins-holder">Wins: <span class="wins"></span>
-          </p>
-          <p class="losses-holder">Losses: <span class="losses"></span>
-          </p>
-          <p class="guesses-holder">Guesses Remaining: <span class="guesses"></span>
-          </p>
+        <div class="col score-holder">
+          <ul>
+            <li class="wins-holder">Wins: <span class="wins"></span></li>
+            <li class="losses-holder">Losses: <span class="losses"></span></li>
+          </ul>
         </div>
       </div>
       <div class="row">
         <div class="col">
           <div class="drawing-holder">
-            <img src="http://via.placeholder.com/350x350" alt="" class="drawing drawing-1">
-            <img src="http://via.placeholder.com/350x350" alt="" class="drawing drawing-2">
-            <img src="http://via.placeholder.com/350x350" alt="" class="drawing drawing-3">
-            <img src="http://via.placeholder.com/350x350" alt="" class="drawing drawing-4">
-            <img src="http://via.placeholder.com/350x350" alt="" class="drawing drawing-5">
-            <img src="http://via.placeholder.com/350x350" alt="" class="drawing drawing-6">
+            <img src="assets/img/drawing-1.png" alt="" class="drawing drawing-1">
+            <img src="assets/img/drawing-2-start.png" alt="" class="drawing drawing-2">
+            <img src="assets/img/drawing-3.png" alt="" class="drawing drawing-3">
+            <img src="assets/img/blank.png" alt="" class="drawing drawing-4">
+            <img src="assets/img/drawing-5.png" alt="" class="drawing drawing-5">
+            <img src="assets/img/blank.png" alt="" class="drawing drawing-6">
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="col">
-            <p class="word-holder"><span class="word"></span>
+        <div class="col guess-holder">
+            <p class="word-holder"><span class="word">_ _ _ _</span>
             </p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-            <p class="guessed-letters-holder">Guessed Letters: <span class="guessed-letters"></span>
+            <p class="guessed-letters-holder">Guessed Letters:<br><span class="guessed-letters"></span>
             </p>
         </div>
       </div>
 
-      <!-- Random Pencil Gif -->
-      <img src="https://media.giphy.com/media/8SNt5Vr8AtFMA/giphy.gif" alt="Pencil" class="pencil">
+      <!-- Link to Portfolio -->
+      <div class="portfolio-holder">
+          <p class="portfolio-link">Coded by <span class="logo"><i class="fas fa-circle"></i></span></p>
+      </div>
 
     </div>
 

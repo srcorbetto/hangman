@@ -13,6 +13,7 @@ $(document).ready(function(){
   var keyPressed;
   var acceptedInput = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
   var guessedLetters = [];
+  var readyToPlay = false;
 
   // Randomly select a word from the randomWord array and assign to the selectedWord
   function selectWord() {
@@ -43,6 +44,9 @@ $(document).ready(function(){
     acceptedInput = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
     $(".guesses").text(numberOfGuesses);
     $(".guessed-letters").text("");
+    $(".drawing-2").attr("src", "assets/img/drawing-2-start.png");
+    $(".drawing-4").attr("src", "assets/img/blank.png");
+    $(".drawing-6").attr("src", "assets/img/blank.png");
   };
 
   // Updates the user's progress
@@ -56,13 +60,12 @@ $(document).ready(function(){
     $(".word").text(revealedLetters.join(" "));
   };
 
-  // Starts the game
-  selectWord();
-
   // Take in keyboard strokes and evaluate game conditions
   document.onkeyup = function(e) {
-    
-    keyPressed = e.key;
+
+    if (readyToPlay === true) {
+
+      keyPressed = e.key;
 
     // Loop through the acceptedInput to see if keyPressed matches
     for(i = 0; i < acceptedInput.length; i++) {
@@ -92,10 +95,19 @@ $(document).ready(function(){
 
           // See if the user has matched the word
           if (revealedLetters.join() === selectedWordLetters.join()) {
-            alert("You won!!!");
+            // Adds a win and starts the game over
             wins++;
+            readyToPlay = false;
             $(".wins").text(wins);
-            selectWord();
+            $(".modal-start h2").text("You Won!");
+            $(".modal-start p").text("Press NEW GAME! to play again.");
+            $(".modal-start button").text("NEW GAME!");
+            $(".modal-start").removeClass("hidden");
+            $(".modal-start button").on("click", function(){
+              $(".modal-start").addClass("hidden");
+              readyToPlay = true;
+              selectedWord();
+            });
           };
       
         } else if (keyPressed !== selectedWordLetters[i]) {
@@ -107,11 +119,43 @@ $(document).ready(function(){
       if (numberOfNonMatches === selectedWordLetters.length) {
         // Decrease score
         numberOfGuesses--;
-        if (numberOfGuesses === 0) {
-          alert("Out of guesses. Start over.");
+
+        // Update the hangman images
+        if (numberOfGuesses === 6) {
+          $(".drawing-2").attr("src", "assets/img/drawing-2-middle.png");
+          $(".drawing-4").attr("src", "assets/img/drawing-4-start.png");
+        } else if (numberOfGuesses === 5) {
+          $(".drawing-4").attr("src", "assets/img/drawing-4-middle.png");
+          $(".drawing-6").attr("src", "assets/img/drawing-6-start.png");
+        } else if (numberOfGuesses === 4) {
+          $(".drawing-4").attr("src", "assets/img/drawing-4-middle-2.png");
+        } else if (numberOfGuesses === 3) {
+          $(".drawing-4").attr("src", "assets/img/drawing-4-end.png");
+        } else if (numberOfGuesses === 2) {
+          $(".drawing-6").attr("src", "assets/img/drawing-6-middle.png");
+        } else if (numberOfGuesses === 1) {
+          $(".drawing-6").attr("src", "assets/img/drawing-6-end.png");
         }
-        $(".guesses").text(numberOfGuesses);
+
+        if (numberOfGuesses === 0) {
+          $(".drawing-2").attr("src", "assets/img/drawing-2-end.png");
+          
+          losses++;
+          readyToPlay = false;
+          $(".losses").text(losses);
+          $(".modal-start h2").text("You Lose!");
+          $(".modal-start p").text("Press NEW GAME! to play again.");
+          $(".modal-start button").text("NEW GAME!");
+          $(".modal-start").removeClass("hidden");
+          $(".modal-start button").on("click", function(){
+            $(".modal-start").addClass("hidden");
+            readyToPlay = true;
+            selectedWord();
+          });
+        }
       }
+    };
+
     };
 
   }; //end keyup...
@@ -119,6 +163,12 @@ $(document).ready(function(){
   // Initialize Values
   $(".wins").text(wins);
   $(".losses").text(losses);
-  $(".guesses").text(numberOfGuesses);
+
+  // Starts the game
+  $(".modal-start button").on("click", function(){
+    $(".modal-start").addClass("hidden");
+    readyToPlay = true;
+    selectWord();
+  });
 
 });

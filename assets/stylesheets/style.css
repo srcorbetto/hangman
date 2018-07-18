@@ -1,5 +1,40 @@
-p, ul, h6, h5, h4, h3, h2, h1 {
+p, button, ul, h6, h5, h4, h3, h2, h1 {
   font-family: 'Gaegu', cursive;
+  /* text-align: center; */
+}
+
+.hidden {
+  display: none !important;
+}
+
+.portfolio-holder {
+  width: 100%;
+  position: fixed;
+  bottom: 5px;
+  text-align: center;
+}
+
+.portfolio-link {
+  
+}
+
+.portfolio-link .logo {
+  color: #EF476F;
+}
+
+.modal-start {
+  width: 40%;
+  max-width: 90%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 5000;
+  position: absolute;
+  display: block;
+  margin: 0 auto;
+  color: #fff;
+  border-radius: 15px;
+  left: 30%;
+  top: 75px;
+  padding: 25px;
   text-align: center;
 }
 
@@ -7,6 +42,40 @@ p, ul, h6, h5, h4, h3, h2, h1 {
   background: url(../img/linedpaper.png) repeat;
   min-height: 100vh;
   width: 100%;
+  /* padding: 10px; */
+}
+
+.score-holder {
+  text-align: center;
+}
+
+.score-holder ul {
+  padding-left: 0px;
+}
+
+.score-holder ul li {
+  display: inline;
+  font-size: 1.5em;
+  padding: 15px;
+}
+
+.guess-holder {
+  text-align: center;
+}
+
+.word-holder {
+  font-size: 2em;
+  padding-top: 15px;
+}
+
+.guessed-letters-holder {
+  font-size: 1.5em;
+}
+
+.guessed-letters {
+  font-size: 2em;
+  position: relative;
+  bottom: 15px;
 }
 
 .drawing-holder {
